@@ -1,0 +1,70 @@
+
+.AD {
+    margin: 5% 0 0 25%;
+    background: black;
+    width: 25em;
+    heigth: 80em;
+    border-radius: 1.5em;
+    font-family: "Book Antiqua" , sans-serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial;
+
+}
+
+.h1 {
+    margin: 1em;
+    margin-bottom: 0em;
+    color: white;
+    padding-bottom: 0em;
+}
+
+.display {
+    margin-top: 0em;
+    align: center;
+    margin-bottom: 0.5em;
+    margin-left: 0.3em;
+    width: 95%;
+    height: 2em;
+    border-radius: 1.5em;
+    border: 0.5em;
+    background-color: white;
+    text-align: right;
+    font-size: 2em;
+    color: red;
+}
+
+
+.DStyle {
+    margin: 1em;
+    width: 4em;
+    height: 4em;
+    border-radius: 1.5em;
+    border: 1em;
+    color: black;
+    background-color: white;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: Tahoma, sans-serif;
+    padding: 0;
+}
+
+.OStyle {
+    margin: 1em;
+    width: 4em;
+    height: 4em;
+    border-radius: 1.5em;
+    color: red;
+    background-color: white;
+    font-size: 1em;
+    font-weight: bolder;
+    font-family: Tahoma, sans-serif;
+}
+
+.AD .DStyle:hover {
+    background-color: yellow;
+    color: black;
+}
+
+.AD .OStyle:hover {
+    background-color: red;
+    color: white;
+}
+

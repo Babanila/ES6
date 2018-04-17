@@ -1,0 +1,7 @@
+$ git .gitignore
+.DS_Store
+/node_modules
+config.json
+package-lock.json
+webpack.config.js
+.babelrc
