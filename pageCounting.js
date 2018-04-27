@@ -15,3 +15,7 @@ margazines = [
 const totalPages = margazines.map(margazine => margazine.pages).reduce((sum, pages) => sum + pages);
 
 console.log(totalPages);
+
+
+const textbooks = [ 50, 48, 32, 96, 85 ].reduce((sum, num) => sum + num);
+console.log(textbooks);

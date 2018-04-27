@@ -10,7 +10,7 @@ export default class Operator extends React.Component {
         this.handleClicked = (operator) => () => this.props.dispatch(addOperation(operator))
     }
     render() {
-    const buttonOperators = ["+", "-", "/", "*", "=", "C"].map((operator) => {
+    const buttonOperators = ["+", "-", "/", "*", "C", "=", "AC"].map((operator) => {
         return (
             <button className="OStyle" key={operator} onClick={this.handleClicked(operator)}>{operator}</button>)})
 
