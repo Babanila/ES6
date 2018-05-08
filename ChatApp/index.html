@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebChat App</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {font: 13px Helvetica, Arial;background-color: white;}
+        form {background: white; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+        form input {border: 0; padding: 10px; width: 90%; margin-right: .5%;}
+        form button {width: 9%; background: darkblue; color: white; font-size: large; border: 2px; padding: 10px;}
+        #mssgInput {width: 90%; border: solid 3px black; font-size: large; padding: 10px;}
+        #message {list-style-type: none; margin: 0; padding: 0;}
+        #message li {padding: 5px 10px;}
+        #message li:nth-child(odd) {background: white; font-style: bold;}
+    </style>
+</head>
+<body>
+    <h1>Welcome to our ChatApp Website</h1>
+    <ul id="message"></ul>
+    <form action="">
+        <input id="mssgInput" autocomplete="off">
+        <button>Send</button>
+    </form>
+<script src="socket.io/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(() => {
+            let socket = io();
+            $('form').submit(() => {
+                socket.emit('chat message', $('#mssgInput').val());
+                $('#mssgInput').val('');
+                return false;
+            });
+            socket.on('chat message', (msg) => {
+                    $('#message').append($('<li>').text(msg));
+            });
+        });
+
+    </script>
+</body>
+</html>

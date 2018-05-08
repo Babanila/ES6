@@ -1,0 +1,23 @@
+Introduction
+Personal computing has been the order of the day for many years now in organizations with system
+administrators having to carry out repetitive and tedious tasks across different personal computers and
+software platforms. The ever-increasing numbers of available personal computers in the world today are
+contributed to by the lifecycle policies of organizations which require a refresh every 5 year or so. The
+increased energy requirements, cost requirements, higher storage requirements, software, operating
+systems and administrative challenges are critical indicators for a more centralized approach to
+computing. Virtual Desktop Infrastructures (VDI) provide a central management center from where
+personalized computing resources are allocated to end users and permission to applications and services
+provided based on predetermined policies. This is in addition to providing long term solutions to the
+challenges. This project work presents the detailed comparison and analysis of personal computing and
+personalized computing as presented by personal computers and VDIs respectively. VDI leverages on the
+power of virtualization to provide individualized desktops and applications to end users with a wide array
+of access options including BYOD (Bring Your own device) and remote access.
+Allianz Technology SE is the Allianz Global Group's internal shared services provider. The key purpose
+of Allianz Technology is to transform Allianz Global Group into a digital group. To achieve this, Allianz
+Technology provides a robust, secure and efficient IT infrastructure, as well as ensuring that new
+technologies and channels support the design, distribution and maintenance of the Allianz Technology
+products. One of the core services of Allianz Technology to the Allianz Global Group is the Allianz
+Virtual Client (AVC). The AVC utilizes cutting edge private cloud technology to address 3 crucial issues:
+a. Digital Standardization of the entire Allianz Global Group.
+b. Enhanced data security
+c. Cost effective and flexible workplaces
