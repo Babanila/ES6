@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebChat App</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {width: 100%; height: 100%; font: 13px Helvetica, Arial;}
+        h1 {text-align: center; margin-top: .5em; margin-bottom: .5em; font-weight: bolder;}
+        form {background: white; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+        form input {border: 0; padding: 10px; width: 90%; margin-right: .5%; font-size: 1.5em;}
+        form button {width: 9%; background: darkblue; color: white; font-size: 2em; border: 2px; padding: 10px;}
+        #mssgInput {width: 90%; border: solid 3px black; padding: 10px;}
+        #userjoin {margin-left: 30%; margin-right: 30%; width: fit-content; align-content: center; padding: 2px; font-size: 1em; font-style: italic; color: darkred;}
+        #div1 {list-style-type: circle; margin-left: 3px; margin-right: 2px; height: 35em; width: 99%; padding: 1px; font-size: 1.5em; border: solid 3px; border-color: black;}
+        #message p{height: border-box; width: fit-content; border: solid darkblue .1em; margin-bottom: .5em;}
+        #message p:nth-child(odd) {height: border-box; width: fit-content; border: solid darkblue .1em; margin-bottom: .5em;}
+    </style>
+
+</head>
+<body>
+    <h1>Welcome to our ChatRoom</h1>
+    <div id="div1">
+    <p id="userjoin"></p>
+    <p id="message"></p>
+    </div>
+
+    <form action="">
+        <input id="mssgInput" autocomplete="off">
+        <button>Send</button>
+    </form>
+<script src="socket.io/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(() => {
+            let socket = io();
+            $('form').submit(() => {
+                socket.emit('chat message', $('#mssgInput').val());
+                $('#mssgInput').val('');
+                return false;
+            });
+
+            socket.on('add user', (message) => {
+                $('#userjoin').append($('<p>').text(message));
+            });
+
+            socket.on('chat message', (msg) => {
+                    $('#message').append($('<p>').text(msg));
+            });
+        });
+    </script>
+</body>
+</html>
