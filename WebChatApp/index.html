@@ -20,11 +20,24 @@
 <h2>Register with only Nickname</h2>
 <div>
     <ul id="mssg"></ul>
-<form id="form1" action="/chat.html">
+<form id="form1" action="/chat.html" method="get">
     <label>Enter your Nickname</label><br>
-    <input type="text" name="name" autocomplete="off" id="username"><br>
-    <button type="submit">Register</button>
+    <input type="text" autocomplete="off" id="username"><br>
+    <button type="submit" id="register">Register</button>
 </form>
 </div>
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+        let socket = io();
+
+            $('#register').click( () => {
+                let username =  $('#username').val();
+                socket.emit('user', username);
+                alert(` ${username.toUpperCase()} you are connected `);
+            })
+</script>
 </body>
 </html>

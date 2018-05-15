@@ -6,13 +6,36 @@
 </head>
 <body>
 <h1>Communication with socket.io!</h1>
+    <div>
+        <label> Enter your response to the Server</label><br><br>
+        <input type="text"  id="umssg" ><br><br>
+        <input type="button" id="bn" value="poke server">
+        <input type="button" id="bn2" value="send">
+    </div>
 
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
     let socket = io();
+
+    const username = prompt("Enter your name");
+            socket.emit('user', username);
+
     socket.on('message', (message) => {
         alert(`${message}`);
-    });
+    })
+
+    $('#bn').click( () => {
+        socket.emit('message', `Thank you for the connection`);
+    })
+
+    $('#bn2').click( () => {
+        socket.emit('message', $('#umssg').val());
+        $('#umssg').val(" ")
+    })
+
+
 </script>
 </body>
 </html>

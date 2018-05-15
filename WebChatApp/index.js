@@ -36,17 +36,54 @@ const minutes = currentDate.getMinutes();
 let time = hour > 12 ? `${hour - 12 }:${minutes} PM` : `${hour}:${minutes} AM`;
 
 let numOfUser = 0;
+let username = {};
 
 io.on('connection', (socket) => {
-    let addUser = numOfUser + 1 ;
-    console.log(`User${addUser} joined on ${fullDate}`);
-    io.emit('add user', `User${addUser} joined on ${fullDate}`);
-    socket.on('chat message', (msg) => {
-        io.emit('chat message', `User${addUser}: ${msg} @${time}`);
-        console.log(`user${addUser}: ${msg} @${time}`);
+
+    socket.on('user', (username) => {
+        socket.username = username;
+        //users.push(socket.username);
+        //console.log(username);
+        console.log(`${socket.username.toUpperCase()} joined on ${fullDate}`);
+        socket.broadcast.emit('user', `${username} joined`);
+        ++numOfUser;
     });
-    ++numOfUser;
+
+    socket.emit('add user', `${socket.username}`);
+
+    socket.on('chat message', (msg) => {
+        socket.emit('chat message', `${msg} @${time}`);
+        socket.broadcast.emit('chat message', `${socket.username}: ${msg} @${time}`);
+        console.log(`${socket.username}: ${msg} @${time}`);
+    });
+
+    console.log(`${numOfUser} users online`);
 });
+
 server.listen(3000, () => {
 console.log(`Server running at port 3000 http://127.0.0.1`);
 });
+
+
+/*
+// Anonymous User without names
+io.sockets.on('connection', (socket) => {
+
+    socket.on('user', (username) => {
+        socket.username = username;
+        console.log(`${username} joined on ${fullDate}`);
+    });
+    let addUser = numOfUser + 1 ;
+    socket.emit('add user', `User${addUser}`);
+    socket.broadcast.emit('user', `User${addUser} joined on ${fullDate}`);
+
+    socket.on('chat message', (msg) => {
+        socket.emit('chat message', `${msg} @${time}`);
+        socket.broadcast.emit('chat message', `User${addUser}: ${msg} @${time}`);
+        console.log(`user${addUser}: ${msg} @${time}`);
+    });
+    ++numOfUser;
+    console.log(`${numOfUser} users online`);
+});
+
+ */

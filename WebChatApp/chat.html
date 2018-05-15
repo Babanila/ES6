@@ -7,6 +7,7 @@
         * {margin: 0; padding: 0; box-sizing: border-box;}
         body {width: 100%; height: 100%; font: 13px Helvetica, Arial;}
         h1 {text-align: center; margin-top: .5em; margin-bottom: .5em; font-weight: bolder;}
+        #username { width: 50%;}
         form {background: white; padding: 3px; position: fixed; bottom: 0; width: 100%; }
         form input {border: 0; padding: 10px; width: 90%; margin-right: .5%; font-size: 1.5em;}
         form button {width: 9%; background: darkblue; color: white; font-size: 2em; border: 2px; padding: 10px;}
@@ -20,6 +21,8 @@
 </head>
 <body>
     <h1>Welcome to our ChatRoom</h1>
+    <h3 id="username">User:</h3>
+
     <div id="div1">
     <p id="userjoin"></p>
     <p id="message"></p>
@@ -34,13 +37,29 @@
     <script>
         $(() => {
             let socket = io();
+
+                //socket.emit('user', username);
+            /*
+            $(document).load( () => {
+                let username =  $('#username').val();
+                socket.emit('user', username);
+                //$('#username').append($('<h3>').text(username));
+
+            })
+            */
+
             $('form').submit(() => {
                 socket.emit('chat message', $('#mssgInput').val());
-                $('#mssgInput').val('');
+                $('#mssgInput').val('');;
                 return false;
             });
 
-            socket.on('add user', (message) => {
+
+            socket.on('add user', (username) => {
+                $('#username').append($('<h3>').text(username));
+            });
+
+            socket.on('user', (message) => {
                 $('#userjoin').append($('<p>').text(message));
             });
 

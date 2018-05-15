@@ -15,16 +15,25 @@ const io = require('socket.io').listen(server);
 
 // When a client connects, we note it in the console
 
-io.on('connection', (socket) => {
-    console.log('A client is connected!');
-    io.emit('message', 'You are connected!');
-});
+io.sockets.on('connection', (socket) => {
 
+    socket.on('user', (username) => {
+        socket.username = username;
+        console.log(`${username} connected!`);
+        //socket.emit('user',  `${username} connected!`);
+        socket.emit('message',  `${username} connected!`);
+        socket.broadcast.emit('message', `${username} connected!`);
+    });
+
+
+    socket.on('message', (msg) => {
+        console.log(`${socket.username} says: ${msg}`);
+    });
+
+});
 server.listen(8080);
-
 /*
-io.on('connection', (socket) => {
-    console.log('A client is connected!');
-});
-
- */
+console.log('A client is connected!');
+socket.emit('message',  ${username} connected!`);
+socket.broadcast.emit('message', `Another user connected!`);
+*/
