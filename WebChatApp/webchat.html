@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Free ChatRooms</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="loginPage">
+        <h1>Welcome to our ChatApp Website</h1>
+        <h2>Register with only Nickname</h2>
+        <ul id="mssg"></ul>
+            <div id="LP">
+                <label><h2>Enter your Nickname</h2></label><br>
+                <input type="text" autocomplete="off" id="usernameInput"><br>
+                <button type="submit" id="register">Register</button>
+            </div>
+    </div>
+
+    <div id="chatPage" hidden="true">
+        <h1>Welcome to ChatRoom</h1>
+        <h3>User:<h3 id="username"></h3></h3>
+
+        <div id="msgScreen">
+            <p id="message"></p>
+        </div>
+
+        <form id="CP">
+            <input id="msgInput" autocomplete="off">
+            <button id="msgSend">Send</button>
+        </form>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>
